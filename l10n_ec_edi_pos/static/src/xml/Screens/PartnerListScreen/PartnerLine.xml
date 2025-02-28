@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates id="template" xml:space="preserve">
+    <t
+        t-name="PartnerLine"
+        t-inherit="point_of_sale.PartnerLine"
+        t-inherit-mode="extension"
+        owl="1"
+    >
+        <xpath expr="//div[t[@t-esc=&quot;props.partner.name or ''&quot;]]" position="after">
+            <div t-if="props.partner.vat and props.partner.vat.length > 0">
+                <t t-esc="props.partner.l10n_latam_identification_type_id[1]"/>: 
+                <t t-esc="props.partner.vat or ''" />
+            </div>
+        </xpath>
+    </t>
+
+</templates>

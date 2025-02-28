@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record forcecreate="True" id="ott_card_red_medianet" model="ott.card.red">
+            <field name="code">medianet</field>
+            <field name="name">MEDIANET</field>
+        </record>
+        <record forcecreate="True" id="ott_card_red_datafast" model="ott.card.red">
+            <field name="code">datafast</field>
+            <field name="name">DATAFAST</field>
+        </record>
+    </data>
+</odoo>

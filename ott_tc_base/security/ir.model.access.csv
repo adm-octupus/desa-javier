@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ott_card_brand_base,ott_tc_base.access_ott_card_brand_base,model_ott_card_brand,base.group_user,1,0,0,0
+access_ott_card_red_base,ott_tc_base.access_ott_card_red_base,model_ott_card_red,base.group_user,1,0,0,0
+access_ott_card_period_base,ott_tc_base.access_ott_card_period_base,model_ott_card_period,base.group_user,1,0,0,0

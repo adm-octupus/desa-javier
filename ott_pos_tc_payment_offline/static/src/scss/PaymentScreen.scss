@@ -1,0 +1,22 @@
+.pos .card-info-container {
+    padding: 25px;
+    padding-top: 0;
+    border-bottom: solid 10px $gray-300;
+    min-height: 154px;
+}
+
+.pos .card-detail-container {
+    display: flex;
+    align-items: center; /* Alinea verticalmente */
+    gap: 10px; /* Espacio entre elementos */
+    margin-bottom: 5px; /* Separación inferior */
+}
+
+.pos .card-detail-container label {
+    flex-basis: 100px; /* Espacio reservado para el label */
+    flex-shrink: 0; /* Evita que el label se reduzca */
+}
+
+.pos .card-detail-container select {
+    width: 200px; /* Ajusta este valor según lo que necesites */
+}

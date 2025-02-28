@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- portal_my_home_menu_leave -->
+    <template id="portal_my_home_menu_leave" name="Portal layout : leave menu entries" inherit_id="portal.portal_breadcrumbs" priority="20">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'leaves' or leaves" t-attf-class="breadcrumb-item #{'active' if not leaves else ''}">
+                <a t-if="leaves" t-attf-href="/my/leaves?{{ keep_query() }}">Leaves</a>
+                <t t-else="">Leaves</t>
+            </li>
+        </xpath>
+    </template>
+
+    <template id="portal_my_home_leave" name="Portal My Home : leaves entries" inherit_id="portal.portal_my_home" priority="40">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Leaves</t>
+                <t t-set="url" t-value="'/my/leaves'"/>
+                <t t-set="placeholder_count" t-value="'leave_count'"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="portal_my_leaves" name="My leaves">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Leaves</t>
+            </t>
+
+            <!-- Insertar el nuevo botón aquí -->
+            <div class="d-flex justify-content-end mb-2">
+                <form action="/my/leaves/new" method="get">
+                    <button type="submit" class="btn btn-primary">
+                        New Time Off
+                    </button>
+                </form>                              
+            </div>
+
+            <!-- Lista de roles de pago -->
+            <t t-if="not leaves">
+                <p>There are no leaves available.</p>
+            </t>
+            <t t-if="leaves">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>            
+                            <th>Description</th>
+                            <th>Time Off Type</th>
+                            <th>From</th>
+                            <th>To</th>
+                            <th>Duration in days</th>
+                            <th>Duration in hours</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="leaves" t-as="leave">
+                            <tr>
+                                <td><span t-field="leave.private_name"/></td>         
+                                <td><span t-field="leave.holiday_status_id.name"/></td>
+                                <td><span t-field="leave.date_from"/></td>
+                                <td><span t-field="leave.date_to"/></td>
+                                <td><span t-field="leave.number_of_days_display"/></td>
+                                <td><span t-field="leave.number_of_hours_display"/></td>
+                                <td>
+                                    <span t-att-class="leave.state == 'draft' and 'badge bg-info' or
+                                                       leave.state in ['confirm', 'validate1'] and 'badge bg-warning' or
+                                                       leave.state == 'validate' and 'badge bg-success'">
+                                        <span t-field="leave.state"/>
+                                    </span>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+
+                <!-- Paginación -->
+                <!-- <t t-call="portal.pager" t-vars="pager=pager"/> -->
+            </t>
+        </t>
+    </template>
+
+    <template id="portal_my_leave_form" name="New Leave Request">
+        <t t-call="portal.portal_layout">
+            <div class="container mt-5">
+
+                <!-- Mostrar mensajes de error -->
+                <t t-if="request.params.get('error')">
+                    <div class="alert alert-danger" role="alert">
+                        <span t-esc="request.params.get('error')"/>
+                    </div>
+                </t>
+
+                <h3>Create a New Time Off</h3>
+                <form action="/my/leaves/submit" method="post" class="o_portal_form o_form_view needs-validation" lang="es">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <div class="form-group">
+                        <label for="leave_type">Time Off Type</label>
+                        <select name="leave_type_id" id="leave_type" class="form-control" t-att-required="'True'">
+                            <option value="" selected="selected">Select One</option>
+                            <t t-foreach="leave_types" t-as="leave_type">
+                                <option t-att-value="leave_type.id" t-att-data-request_unit="leave_type.request_unit"><t t-esc="leave_type.name"/></option>
+                            </t>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <br/>
+                        <fieldset class="row mb-3">
+                            <div class="col-sm-10">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="request_unit" id="request_unit_days" value="day" t-att-checked="'True'"/>
+                                    <label class="form-check-label" for="request_unit_days">
+                                        Days
+                                    </label>
+                                </div> 
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="request_unit" id="request_unit_half_day" value="half_day"/>
+                                    <label class="form-check-label" for="request_unit_half_day">
+                                        Half Day
+                                    </label>
+                                </div> 
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="request_unit" id="request_unit_hours" value="hour"/>
+                                    <label class="form-check-label" for="request_unit_hours">
+                                        Personalized hours
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-6" id="request_date_from_period_div" style="display: none;">
+                            <label for="time_from">Period</label>
+                            <select name="request_date_from_period" id="request_date_from_period" class="form-control">
+                                <option value="" selected="selected">Select One</option>
+                                <t t-foreach="from_period_selection" t-as="period">
+                                    <option t-att-value="period[0]"><t t-esc="period[1]"/></option>
+                                </t>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Date From</label>
+                            <input type="date" name="date_from" id="date_from" class="form-control"/>
+                        </div>
+                        <div class="col-md-6" id="date_to_div">
+                            <label class="form-label">Date To</label>
+                            <input type="date" name="date_to" id="date_to" class="form-control"/>
+                        </div>
+                    </div>
+                    <div id="request_hour_div" style="display: none;">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="time_from">Time From</label>
+                                <select name="time_from" id="time_from" class="form-control" t-att-required="'True'">
+                                    <option value="" selected="selected">Select One</option>
+                                    <t t-foreach="hour_from_selection" t-as="hour">
+                                        <option t-att-value="hour[0]"><t t-esc="hour[1]"/></option>
+                                    </t>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="time_to">Time To</label>
+                                <select name="time_to" id="time_to" class="form-control" t-att-required="'True'">
+                                    <option value="" selected="selected">Select One</option>
+                                    <t t-foreach="hour_to_selection" t-as="hour">
+                                        <option t-att-value="hour[0]"><t t-esc="hour[1]"/></option>
+                                    </t>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="private_name" class="form-label">Description</label>
+                        <textarea class="form-control" name="private_name" id="private_name" rows="3" t-att-required="'True'"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                </form>
+                <script type="text/javascript">
+                    document.addEventListener('DOMContentLoaded', function () {
+
+                        var leaveTypeSelect = document.getElementById('leave_type');
+
+                        // Obtener los radio buttons y las secciones a mostrar/ocultar
+                        var daysRadio = document.getElementById('request_unit_days');
+                        var halfDayRadio = document.getElementById('request_unit_half_day');
+                        var personalizedHoursRadio = document.getElementById('request_unit_hours');
+                        
+                        // Div Section
+                        var requestDateFromPeriodDiv = document.getElementById('request_date_from_period_div');
+                        var requestHourDiv = document.getElementById('request_hour_div');
+                        var dateToDiv = document.getElementById('date_to_div');
+
+                        // Inputs Fields
+                        var periodSelect = document.getElementById('request_date_from_period');
+                        var dateFromInput = document.getElementById('date_from');
+                        var dateToInput = document.getElementById('date_to');
+                        // var dateInput = document.getElementById('date');
+                        var timeFromInput = document.getElementById('time_from');
+                        var timeToInput = document.getElementById('time_to');
+                                             
+                        // Función para mostrar/ocultar la sección y establecer 'required'
+                        function toggleSectionsAndRequired() {
+                            console.log('toggleSectionsAndRequired called');
+                            
+                            // Ocultar las secciones inicialmente
+                            requestDateFromPeriodDiv.style.display = 'none';
+                            requestHourDiv.style.display = 'none';
+                            dateToDiv.style.display = 'none';
+                                      
+                            // Mostrar la sección correcta y establecer el atributo 'required' según la selección
+
+                            console.log('value radio days:', daysRadio.checked);
+                            console.log('value half days:', halfDayRadio.checked);
+                            console.log('value hours days:', personalizedHoursRadio.checked);
+
+                            dateFromInput.setAttribute('required', 'required');
+
+                            if (daysRadio.checked) {
+                                dateToDiv.style.display = 'block';
+                                // Establecer 'required' solo cuando se muestra
+                                dateToInput.setAttribute('required', 'required');
+                                // Quitar 'required' cuando no se necesita
+                                periodSelect.removeAttribute('required');
+                                timeFromInput.removeAttribute('required');
+                                timeToInput.removeAttribute('required');  
+                                console.log('Date field not required');
+                            } else if (halfDayRadio.checked) {
+                                requestDateFromPeriodDiv.style.display = 'block';
+                                // Establecer 'required' solo cuando se muestra
+                                periodSelect.setAttribute('required', 'required');
+                                // Quitar 'required' cuando no se necesita
+                                dateToInput.removeAttribute('required');
+                                timeFromInput.removeAttribute('required');
+                                timeToInput.removeAttribute('required');
+                            } else if (personalizedHoursRadio.checked) {
+                                requestHourDiv.style.display = 'block';
+                                // Establecer 'required' solo cuando se muestra
+                                timeToInput.setAttribute('required', 'required'); 
+                                // Quitar 'required' cuando no se necesita
+                                periodSelect.removeAttribute('required');
+                                dateToInput.removeAttribute('required');
+                                timeFromInput.removeAttribute('required');
+                                timeToInput.removeAttribute('required'); 
+                                console.log('Date field set to required');
+                            }
+                        }
+
+                        // Agregar eventos de cambio a los radio buttons
+                        daysRadio.addEventListener('change', toggleSectionsAndRequired);
+                        halfDayRadio.addEventListener('change', toggleSectionsAndRequired);
+                        personalizedHoursRadio.addEventListener('change', toggleSectionsAndRequired);
+                        
+                        // Escuchar los cambios en el select
+                        leaveTypeSelect.addEventListener('change', function () {
+
+                            console.log('leaveTypeSelect called');
+
+                            // Obtener la opción seleccionada
+                            var selectedOption = leaveTypeSelect.options[leaveTypeSelect.selectedIndex];
+                            
+                            // Obtener el tipo de ausencia usando el atributo data-request_unit
+                            var dataRequestUnit = selectedOption.getAttribute('data-request_unit');
+                
+                            // Lógica para mostrar/ocultar campos en función del tipo de ausencia
+
+                            console.log('dataRequestUnit:', dataRequestUnit);
+
+                            if (dataRequestUnit === 'day') {
+                                daysRadio.checked = true;
+                                halfDayRadio.disabled = true;
+                                personalizedHoursRadio.disabled = true;
+                            } else {
+                                daysRadio.checked = true;
+                                daysRadio.disabled = false;
+                                halfDayRadio.disabled = false;
+                                personalizedHoursRadio.disabled = false;
+                            }
+
+                            daysRadio.dispatchEvent(new Event('change'));
+                        });
+
+                        // Ejecutar la función al cargar la página para establecer el estado inicial
+                        toggleSectionsAndRequired();
+                    });
+                </script>
+            </div>
+        </t>
+    </template>
+</odoo>

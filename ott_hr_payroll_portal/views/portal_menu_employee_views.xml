@@ -1,0 +1,16 @@
+<odoo>
+    <template id="user_menu_payslip" name="User Menu Payslip" inherit_id="portal.user_dropdown">
+        <xpath expr="." position="inside">
+            <t t-if="not 'Employee' in request.env.user.groups_id.mapped('name')">
+                <t t-set="employee_menu">
+                    <div role="separator" class="dropdown-divider"/>
+                    <div role="menuitem" class="dropdown-item-text font-weight-bold">Employee</div>
+                    <a href="/my/payslips" role="menuitem" class="dropdown-item">Mis Roles de Pago</a>
+                </t>
+                <t t-jquery="div.dropdown-menu" t-operation="append">
+                    <t t-raw="employee_menu"/>
+                </t>
+            </t>
+        </xpath>
+    </template>
+</odoo>

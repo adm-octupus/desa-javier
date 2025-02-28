@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_property_form_inherit" model="ir.ui.view">
+        <field name="name">res.partner.pos.form.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="point_of_sale.view_partner_property_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='point_of_sale']/field[@name='barcode']" position="before">
+                <field name="ott_pos_partner_enabled_in_pos"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_res_partner_filter_search_inherit" model="ir.ui.view">
+        <field name="name">res.partner.view.search.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//filter[@name='type_company']" position="after">
+                    <separator/>
+                    <filter string="Partner enabled for use in POS" name="ott_pos_partner_enabled_in_pos" domain="[('ott_pos_partner_enabled_in_pos', '=', True)]"/>
+                    <separator/>     
+                </xpath>     
+            </data>
+        </field>
+    </record>
+</odoo>

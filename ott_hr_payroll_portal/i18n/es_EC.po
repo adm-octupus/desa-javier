@@ -1,0 +1,129 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* ott_hr_payroll_portal
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-09-16 19:09+0000\n"
+"PO-Revision-Date: 2024-09-16 19:09+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: ott_hr_payroll_portal
+#: model_terms:ir.ui.view,arch_db:ott_hr_payroll_portal.portal_searchbar
+msgid "<span class=\"small me-1 navbar-text\">Filter By:</span>"
+msgstr "<span class=\"small me-1 navbar-text\">Filtrar por:</span>"
+
+#. module: ott_hr_payroll_portal
+#: model_terms:ir.ui.view,arch_db:ott_hr_payroll_portal.portal_searchbar
+msgid "<span class=\"small me-1 navbar-text\">Sort By:</span>"
+msgstr "<span class=\"small me-1 navbar-text\">Ordenar por:</span>"
+
+#. module: ott_hr_payroll_portal
+#: model_terms:ir.ui.view,arch_db:ott_hr_payroll_portal.portal_my_payslips
+msgid "Actions"
+msgstr "Acciones"
+
+#. module: ott_hr_payroll_portal
+#. odoo-python
+#: code:addons/ott_hr_payroll_portal/controllers/portal.py:0
+#, python-format
+msgid "All"
+msgstr "Todos"
+
+#. module: ott_hr_payroll_portal
+#: model_terms:ir.ui.view,arch_db:ott_hr_payroll_portal.portal_my_payslips
+msgid "Basic Wage"
+msgstr "Salario básico"
+
+#. module: ott_hr_payroll_portal
+#. odoo-python
+#: code:addons/ott_hr_payroll_portal/controllers/portal.py:0
+#: model_terms:ir.ui.view,arch_db:ott_hr_payroll_portal.portal_my_payslips
+#, python-format
+msgid "Batch"
+msgstr "Lote"
+
+#. module: ott_hr_payroll_portal
+#: model_terms:ir.ui.view,arch_db:ott_hr_payroll_portal.portal_searchbar
+msgid "Search"
+msgstr "Buscar"
+
+#. module: ott_hr_payroll_portal
+#. odoo-python
+#: code:addons/ott_hr_payroll_portal/controllers/portal.py:0
+#, python-format
+msgid "Last month"
+msgstr "Último mes"
+
+#. module: ott_hr_payroll_portal
+#. odoo-python
+#: code:addons/ott_hr_payroll_portal/controllers/portal.py:0
+#, python-format
+msgid "Last year"
+msgstr "Último año"
+
+#. module: ott_hr_payroll_portal
+#. odoo-python
+#: code:addons/ott_hr_payroll_portal/controllers/portal.py:0
+#, python-format
+msgid "Latest"
+msgstr "Más reciente"
+
+#. module: ott_hr_payroll_portal
+#: model_terms:ir.ui.view,arch_db:ott_hr_payroll_portal.portal_my_payslips
+msgid "Month"
+msgstr "Mes"
+
+#. module: ott_hr_payroll_portal
+#: model_terms:ir.ui.view,arch_db:ott_hr_payroll_portal.portal_my_payslips
+msgid "Net Wage"
+msgstr "Salario neto"
+
+#. module: ott_hr_payroll_portal
+#. odoo-python
+#: code:addons/ott_hr_payroll_portal/controllers/portal.py:0
+#, python-format
+msgid "Oldest"
+msgstr "Más antiguo"
+
+#. module: ott_hr_payroll_portal
+#: model:ir.model,name:ott_hr_payroll_portal.model_hr_payslip
+msgid "Pay Slip"
+msgstr "Rol de pago"
+
+#. module: ott_hr_payroll_portal
+#: model_terms:ir.ui.view,arch_db:ott_hr_payroll_portal.portal_my_home_menu_payslip
+#: model_terms:ir.ui.view,arch_db:ott_hr_payroll_portal.portal_my_home_payslip
+#: model_terms:ir.ui.view,arch_db:ott_hr_payroll_portal.portal_my_payslips
+msgid "Payslips"
+msgstr "Roles de pago"
+
+#. module: ott_hr_payroll_portal
+#. odoo-python
+#: code:addons/ott_hr_payroll_portal/controllers/portal.py:0
+#: model_terms:ir.ui.view,arch_db:ott_hr_payroll_portal.portal_my_payslips
+#, python-format
+msgid "Reference"
+msgstr "Referencia"
+
+#. module: ott_hr_payroll_portal
+#: model_terms:ir.ui.view,arch_db:ott_hr_payroll_portal.portal_my_payslips
+msgid "There are no payslips available."
+msgstr "No hay roles de pago disponibles."
+
+#. module: ott_hr_payroll_portal
+#: model_terms:ir.ui.view,arch_db:ott_hr_payroll_portal.portal_searchbar
+msgid "Toggle filters"
+msgstr "Activar o desactivar filtros"
+
+#. module: ott_hr_payroll_portal
+#: model_terms:ir.ui.view,arch_db:ott_hr_payroll_portal.portal_my_payslips
+msgid "Year"
+msgstr "Año"
