@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_pos_session_form_inherited" model="ir.ui.view">
+            <field name="name">pos.session.form.inherited</field>
+            <field name="model">pos.session</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_session_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="inside"> 
+                    <!-- attrs="{'invisible':[('state', 'not in', ('draft'))]}" -->
+                    <button name="button_create_batch_from_pos_session" type="object" string="Create card batch" class="oe_highlight" />
+                </xpath>
+                <xpath expr="//sheet/group" position="replace"> 
+                    <group>
+                        <group>
+                            <field name="cash_control" invisible="1"/>
+                            <field name="user_id"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="config_id" readonly="1"/>
+                            <field name="move_id" readonly="1" groups="account.group_account_readonly"/>
+                            <field name="start_at" attrs="{'invisible': [('state', '=', 'opening_control')]}"/>
+                            <field name="stop_at" attrs="{'invisible': [('state', '!=', 'closed')]}"/>
+                            <field name="cash_register_balance_start"/>
+                            <field name="cash_register_balance_end_real" attrs="{'invisible': [('state', '!=', 'closed')]}"/>
+                        </group>
+                        <group>
+                            <field name="ott_medianet_lot" attrs="{'readonly': [('state', '=', 'closed')]}"/>
+                            <field name="ott_datafast_lot" attrs="{'readonly': [('state', '=', 'closed')]}"/>
+                        </group> 
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

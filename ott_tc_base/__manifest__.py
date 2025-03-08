@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base', 'account_accountant'],
 
     # always loaded
     'data': [
@@ -28,8 +28,8 @@
         'data/ott_card_red.xml',
         'data/ott_card_period.xml',
         'data/ott_card_brand.xml',
-        # 'views/views.xml',
-        # 'views/templates.xml',
+        'views/ott_card_batch_views.xml',
+        'views/ott_hr_menus_views.xml',
     ],
     # only loaded in demonstration mode
     # 'demo': [

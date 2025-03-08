@@ -2,8 +2,8 @@
 from odoo import _
 
 OTT_CARD_TYPE = [
-    ('credit', 'Card Credit'),
     ('debit', 'Card Debit'),
+    ('credit', 'Card Credit'),
 ]  
 
 OTT_CARD_PAYMENT_TERMS = [

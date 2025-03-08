@@ -20,3 +20,18 @@
 .pos .card-detail-container select {
     width: 200px; /* Ajusta este valor según lo que necesites */
 }
+
+.pos .red-detail-container {
+    display: flex;
+    gap: 20px;
+    margin: 20px 0;
+    padding: 15px;
+    padding-top: 15px;
+    border-top: solid 1px $gray-300;
+    border-bottom: solid 1px $gray-300;
+    // min-height: 154px;
+}
+
+.pos .red-detail-container label {
+    font-weight: bold;
+}

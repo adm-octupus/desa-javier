@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates id="template" xml:space="preserve">
+    <t
+        t-name="ClosePosPopup"
+        t-inherit="point_of_sale.ClosePosPopup"
+        t-inherit-mode="extension"
+        owl="1"
+    >
+        <xpath expr="//main[@class='body']/div[@class='payment-methods-overview']" position="after">
+            <div class="red-detail-container">
+                <div>
+                    <label for="lotMedianet">Medianet Lot:</label>
+                    <input type="text" t-model="state.lotMedianet" placeholder="Enter batch medianet"
+                        pattern="\d+" inputmode="numeric" title="Only numbers are allowed"
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '');" />
+                </div>
+                <div>
+                    <label for="lotDatafast">Datafast Lot:</label>
+                    <input type="text" t-model="state.lotDatafast" placeholder="Enter batch datafast"
+                        pattern="\d+" inputmode="numeric" title="Only numbers are allowed"
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '');" />
+                </div>
+            </div>
+        </xpath>
+    </t>
+</templates>

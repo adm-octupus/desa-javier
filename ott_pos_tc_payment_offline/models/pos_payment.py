@@ -7,6 +7,7 @@ class PosPayment(models.Model):
     _inherit = 'pos.payment'
 
     ott_card_red_id = fields.Many2one('ott.card.red', string='Card Red')
+    ott_card_red_code = fields.Char(related="ott_card_red_id.code", string='Red Code', store=True, readonly=True, copy=False)
     ott_card_brand_id = fields.Many2one('ott.card.brand', string='Card Brand')
     ott_card_type = fields.Selection(selection=OTT_CARD_TYPE, string="Card type")
     ott_card_payment_terms = fields.Selection(selection=OTT_CARD_PAYMENT_TERMS, string="Payment terms")
