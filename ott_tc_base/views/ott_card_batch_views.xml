@@ -6,7 +6,7 @@
         <field name="name">ott.card.batch.tree</field>
         <field name="model">ott.card.batch</field>
         <field name="arch" type="xml">
-            <tree string="Card batch settlement" create="false">         
+            <tree string="Card batch" create="false">         
                 <field name="currency_id" invisible="1" readonly="1"/>
                 <field name="source_module" optional="hide"/> 
                 <field name="batch"/>
@@ -40,15 +40,15 @@
                 </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
-                        <!-- <button type="object" class="oe_stat_button" icon="fa-money" name="action_open_loan_repayment" attrs="{'invisible': [('count_repayment_loan','=',0)]}">
+                       <button type="object" class="oe_stat_button" icon="fa-bars" name="action_open_card_batch_settlement" attrs="{'invisible': [('card_batch_settlement_count','=',0)]}">
                             <div class="o_form_field o_stat_info">
                                 <span class="o_stat_value">
-                                    <field name="count_repayment_loan"/>                                       
+                                    <field name="card_batch_settlement_count"/>                                       
                                 </span>
-                                <span class="o_stat_text" attrs="{'invisible': [('count_repayment_loan','&gt;', 1)]}">Repayment</span>
-                                <span class="o_stat_text" attrs="{'invisible': [('count_repayment_loan','&lt;=', 1)]}">Repayments</span>
-                            </div>
-                        </button> -->
+                                <span class="o_stat_text" attrs="{'invisible': [('card_batch_settlement_count','&gt;', 1)]}">Settlement</span>
+                                <span class="o_stat_text" attrs="{'invisible': [('card_batch_settlement_count','&lt;=', 1)]}">Settlements</span>
+                            </div>         
+                        </button>
                     </div>
                     <group>
                         <group>

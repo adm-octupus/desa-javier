@@ -20,15 +20,17 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'account_accountant'],
+    'depends': ['base', 'account_accountant', 'l10n_ec'],
 
     # always loaded
     'data': [
+        # 'security/ott_tc_base_security.xml',
         'security/ir.model.access.csv',
         'data/ott_card_red.xml',
         'data/ott_card_period.xml',
         'data/ott_card_brand.xml',
         'views/ott_card_batch_views.xml',
+        'views/ott_card_batch_settlement_views.xml',
         'views/ott_hr_menus_views.xml',
     ],
     # only loaded in demonstration mode

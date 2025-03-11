@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--Tree view-->
+    <record id="view_ott_card_batch_settlement_tree" model="ir.ui.view">
+        <field name="name">ott.card.batch.settlement.tree</field>
+        <field name="model">ott.card.batch.settlement</field>
+        <field name="arch" type="xml">
+            <tree string="Card batch settlement" create="false">   
+
+                <field name="currency_id" invisible="1" readonly="1"/>
+                <field name="batch" optional="show"/> 
+                <field name="card_red_name" optional="show"/> 
+
+                <field name="partner_id"/> 
+                <!-- <field name="partner_bank_id" optional="hide"/> -->
+                <field name="commission_account_id" optional="hide"/>
+                <!-- <field name="bank_account_id" optional="hide"/> -->
+
+                <!-- <field name="l10n_ec_authorization_date"/> -->
+                <!-- <field name="l10n_latam_document_type_id" optional="show"/> -->
+                <!-- <field name="l10n_latam_document_number" optional="show"/> -->
+                <!-- <field name="l10n_ec_authorization_number" optional="hide"/> -->
+
+                <!-- <field name="settlement_account_id" optional="hide"/> -->
+                <!-- <field name="amount_deposit" widget="monetary" options="{'currency_field': 'currency_id'}"/> -->
+                <!-- <field name="amount_vat" widget="monetary" options="{'currency_field': 'currency_id'}"/> -->
+                <!-- <field name="amount_vat_withholding_base" widget="monetary" options="{'currency_field': 'currency_id'}"/> -->
+                <!-- <field name="amount_ir_withholding_base" widget="monetary" options="{'currency_field': 'currency_id'}"/> -->
+                <!-- <field name="amount_to_be_paid" widget="monetary" options="{'currency_field': 'currency_id'}"/> -->
+
+                <field name="company_id" optional="hide" groups="base.group_multi_company"/>
+                <field name="state" widget="badge"          
+                    decoration-success="state in ('posted')"
+                    decoration-danger="state in ('cancel')"
+                />         
+            </tree>
+        </field>
+    </record>
+
+    <!--Form view-->
+    <record id="view_ott_card_batch_settlement_form" model="ir.ui.view">
+        <field name="name">ott.card.batch.settlement.form</field>
+        <field name="model">ott.card.batch.settlement</field>
+        <field name="arch" type="xml">
+            <form string="Card batch settlement">
+                <header>
+                    <button name="action_create_and_open_invoice" type="object" string="Add Invoice" states="draft,posted" class="oe_highlight" />
+                    <field name="state" widget="statusbar" statusbar_visible="draft,posted"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button type="object" class="oe_stat_button" icon="fa-bars" name="action_open_invoice" attrs="{'invisible': [('invoice_count','=',0)]}">
+                            <div class="o_form_field o_stat_info">
+                                <span class="o_stat_value">
+                                    <field name="invoice_count"/>                                       
+                                </span>
+                                <span class="o_stat_text" attrs="{'invisible': [('invoice_count','&gt;', 1)]}">Invoice</span>
+                                <span class="o_stat_text" attrs="{'invisible': [('invoice_count','&lt;=', 1)]}">Invoices</span>
+                            </div>         
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <span class="o_form_label" attrs="{'invisible':[('name', '=', 'New')], 'readonly': [('state', '!=', 'draft')]}">Settlement</span>
+                        <h1>
+                            <field name="name" attrs="{'invisible':[('name', '=', 'New')], 'readonly': [('state', '!=', 'draft')]}"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="partner_id" />
+                            <!-- <field name="partner_bank_id" />      
+                            <field name="bank_account_id" /> -->
+                        </group>
+                        <group>
+                            <field name="issue_date" />
+                            <!-- <field name="l10n_ec_authorization_date" />
+                            <field name="l10n_latam_document_number" />
+                            <field name="l10n_ec_authorization_number" /> -->
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Transactions" name="transactions">
+                            <group>
+                                <group>
+                                    <field name="commission_account_id"/> 
+                                    <field name="settlement_account_id"/>
+                                </group>
+                            </group>
+                            <field name="card_batch_settlement_transaction_ids" >
+                                <tree editable="bottom" default_order="create_date desc, amount_deposit desc">
+                                    <field name="company_id" invisible="1" readonly="1"/>
+                                    <field name="currency_id" invisible="1" readonly="1"/>
+                                    <field name="amount_deposit" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                    <field name="amount_commission" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                    <field name="amount_vat" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                </tree>
+                            </field>
+                            <group class="oe_subtotal_footer oe_right" colspan="2" >
+                                <field name="currency_id" invisible="1"/>
+                                <field name="total_deposit_amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                <field name="total_commission_amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                <field name="total_vat_amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                <field name="total_withhol_amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                <field name="total_to_be_paid_amount" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/> 
+                            </group>
+                            <div class="oe_clear"/>
+                        </page>
+                        <page string="Withhol" name="withhol">
+                            <group>
+                                <group>
+                                    <field name="withhol_document_number"/> 
+                                    <field name="withhol_authorization_number"/> 
+                                </group>
+                            </group>
+                            <field name="card_batch_settlement_withhol_ids" >
+                                <tree editable="bottom">
+                                    <field name="company_id" invisible="1" readonly="1"/>
+                                    <field name="currency_id" invisible="1" readonly="1"/>
+                                    <field name="tax_id" required="1"/>
+                                    <field name="tax_account_id" required="1" optional="hide"/>
+                                    <field name="base" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                    <field name="amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                </tree>
+                            </field>
+                            <group class="oe_subtotal_footer oe_right" colspan="2" >
+                                <field name="currency_id" invisible="1"/>
+                                <field name="total_withhol_amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            </group>
+                            <div class="oe_clear"/>
+                        </page>
+                         <page string="Other info" name="other_info">
+                            <group>
+                                <group>
+                                    <field name="batch" readonly="1"/> 
+                                    <field name="card_red_name" readonly="1"/> 
+                                    <field name="company_id" readonly="1"/>
+                                    <field name="currency_id" readonly="1"/>
+                                </group>
+                            </group>
+                         </page>
+                    </notebook>
+                </sheet>
+                <!-- Chatter -->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+</odoo>
