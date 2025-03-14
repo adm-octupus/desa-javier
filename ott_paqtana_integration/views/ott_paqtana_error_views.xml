@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<odoo>
+    <record id="view_ott_paqtana_error_tree" model="ir.ui.view">
+        <field name="name">view.ott.paqtana.error.tree</field>
+        <field name="model">ott.paqtana.error</field>
+        <field name="arch" type="xml">
+            <tree string="Paqtana Errors">
+                <field name="company_id" optional="hide" groups="base.group_multi_company"/>
+                <field name="error_datetime" readonly="1"/>
+                <field name="error_type" readonly="1"/>   
+                <field name="error_message" readonly="1"/>
+                <field name="json_data" readonly="1"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_ott_paqtana_error_tree_search" model="ir.ui.view">
+        <field name="name">view.ott.paqtana.error.search</field>
+        <field name="model">ott.paqtana.error</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="error_datetime"/>
+                <field name="error_type"/>
+                <field name="error_message"/>
+                <group string="Datetime">
+                    <filter name="group_by_error_type" domain="[]" context="{'group_by':'error_type'}"/>
+                    <filter name="group_by_error_datetime" domain="[]" context="{'group_by':'error_datetime'}"/>
+                </group>
+                <filter string="Company" name="group_by_company_id" domain="[]" context="{'group_by':'company_id'}"/>
+            </search>
+        </field>
+    </record>
+    <record id="action_ott_ott_paqtana_error_api" model="ir.actions.act_window">
+        <field name="name">Paqtana Error</field>
+        <field name="res_model">ott.paqtana.error</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{'create': False, 'edit': False}</field>
+    </record>
+</odoo>

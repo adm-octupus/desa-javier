@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="OttPaqtanaWorkspaceListController.Buttons" owl="1">
+        <div class="o_list_buttons">
+            <button type="button" class="btn btn-primary" t-on-click="onClickSyncWorkspace">
+                Sync with Paqtana
+            </button>
+        </div>
+    </t>
+</templates>

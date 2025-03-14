@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Top menu item -->
+        <!-- groups="ott_hr_sap_integration.group_ott_routik_integration" -->
+        <menuitem
+            id="menu_ott_paqtana_menu_root"
+            name="Paqtana"
+            sequence="300"      
+            web_icon="ott_paqtana_integration,static/description/icon.png"/>
+  
+        <!-- Integration -->
+        <!-- <menuitem
+            id="menu_ott_hr_sap_integration"
+            name="Integration"
+            parent="menu_ott_hr_sap_menu_root"
+            sequence="10"/>
+
+        <menuitem
+            id="menu_ott_hr_sap_employee"
+            name="Employee"
+            parent="menu_ott_hr_sap_integration"
+            action="hr.open_view_employee_list_my"      
+            sequence="10"/>
+        <menuitem
+            id="menu_ott_hr_sap_journal_entries"
+            name="Journal Entries"
+            parent="menu_ott_hr_sap_integration"
+            action="account.action_move_journal_line"      
+            sequence="20"/>
+        <menuitem
+            id="menu_ott_hr_sap_batch_payment"
+            name="Batch Payment"
+            parent="menu_ott_hr_sap_integration"
+            action="account_batch_payment.action_batch_payment_out"      
+            sequence="30"/> -->
+                     
+        <!-- LOG -->
+        <menuitem
+            id="menu_ott_paqtana_api_log"
+            name="Log"
+            parent="menu_ott_paqtana_menu_root"
+            sequence="80"
+            groups="base.group_no_one"/>
+        <menuitem
+            id="menu_ott_paqtana_error_api"
+            name="Log api error"
+            parent="menu_ott_paqtana_api_log"
+            action="ott_paqtana_integration.action_ott_ott_paqtana_error_api"
+            sequence="1"
+            groups="base.group_no_one"/>
+
+        <!-- CONFIGURATION -->
+        <menuitem
+            id="menu_ott_paqtana_menu_config"
+            name="Configuration"
+            parent="menu_ott_paqtana_menu_root"        
+            sequence="100" />
+
+        <menuitem
+            id="menu_ott_paqtana_config_settings_menu"
+            name="Settings"
+            parent="ott_paqtana_integration.menu_ott_paqtana_menu_config"
+            action="ott_paqtana_integration.action_ott_paqtana_configuration"
+            sequence="0"
+            groups="base.group_system"/>
+
+        <menuitem 
+            id="menu_ott_paqtana_workspace" 
+            name="Workspace" 
+            action="ott_paqtana_integration.action_config_ott_paqtana_workspace" 
+            parent="ott_paqtana_integration.menu_ott_paqtana_menu_config" 
+            sequence="1"  />
+
+    </data>
+</odoo>

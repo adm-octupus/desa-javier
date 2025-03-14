@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+    <record id="ir_ott_paqtana_cron_send_master_inventory_data_by_company" model="ir.cron">
+        <field name="name">Paqtana: Send master inventory data by company</field>
+        <field name="model_id" ref="model_api_ott_paqtana_master_inventory"/>
+        <field name="state">code</field>
+        <field name="code">model.send_master_inventory_data_by_company()</field> <!-- Llama directamente al método -->
+        <field name="active" eval="False"/>
+        <field name="interval_number">1</field> <!-- Intervalo -->
+        <field name="interval_type">days</field> <!-- Tipo de intervalo: minutes, hours, days, weeks, months -->
+        <field name="numbercall">-1</field> <!-- Número de llamadas (-1 para ilimitado) -->
+        <field name="doall" eval="False"/> <!-- Ejecutar trabajos retrasados si Odoo estuvo apagado -->
+    </record>
+    <record id="ir_ott_paqtana_cron_send_historical_demand_data_by_company" model="ir.cron">
+        <field name="name">Paqtana: Send historical demand data by company</field>
+        <field name="model_id" ref="model_api_ott_paqtana_historical_demand"/>
+        <field name="state">code</field>
+        <field name="code">model.send_historical_demand_data_by_company()</field> <!-- Llama directamente al método -->
+        <field name="active" eval="False"/>
+        <field name="interval_number">1</field> <!-- Intervalo -->
+        <field name="interval_type">days</field> <!-- Tipo de intervalo: minutes, hours, days, weeks, months -->
+        <field name="numbercall">-1</field> <!-- Número de llamadas (-1 para ilimitado) -->
+        <field name="doall" eval="False"/> <!-- Ejecutar trabajos retrasados si Odoo estuvo apagado -->
+    </record>
+
+
+
+</odoo>
