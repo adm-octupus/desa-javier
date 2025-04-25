@@ -13,8 +13,8 @@
     'depends': ['base','account','sale_stock'],
     'data': [
         # 'security/ir.model.access.csv',
-        'report/factura_ecuador_template.xml',
-        'report/factura_ecuador_report.xml',
+        'report/invoice_garmin_template.xml',
+        'report/invoice_garmin_report.xml',
     ],
     'installable': True,
     'auto_install': False,
