@@ -1,4 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_ott_paqtana_workspace_user,ott_paqtana_integration.ott_paqtana_workspace_user,model_ott_paqtana_workspace,base.group_user,1,1,1,1
-access_ott_paqtana_error_user,ott_paqtana_integration.access_ott_paqtana_error_user,model_ott_paqtana_error,base.group_user,1,1,1,1
-access_ott_paqtana_master_inventory_sql_user,ott_paqtana_integration.access_ott_paqtana_master_inventory_sql_user,model_ott_paqtana_master_inventory_sql,base.group_user,1,1,1,1
