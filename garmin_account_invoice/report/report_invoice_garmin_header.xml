@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_invoice_garmin_document_header">
+            <t t-name="garmin_account_invoice.report_invoice_garmin_document_header">
+                <div style="height: 40mm; overflow: hidden; font-family: 'Liberation Mono', 'DejaVu Sans Mono', monospace !important;">
+                    <div class="row" style="margin-bottom: 3mm;">
+                        <div class="col-8" style="padding-left: 5mm;">
+                            <div style="font-size: 11px;">
+                                <div><strong>CLIENTE:</strong> <span t-field="doc.partner_id.name"/></div>
+                                <div><strong>R.U.C:</strong> <span t-field="doc.partner_id.vat"/></div>        
+                                <div><strong>Email:</strong> <span t-field="doc.partner_id.email"/></div>
+                                <div><strong>DIRECCIÓN:</strong> <span t-field="doc.partner_id.street"/> <span t-field="doc.partner_id.street2"/></div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div style="font-size: 11px;">
+                                <div><strong>REF.:</strong> <span t-field="doc.name"/></div>
+                                <div><strong>FECHA:</strong> <span t-field="doc.l10n_ec_authorization_date" t-options='{"format": "dd/MMM/yyyy"}'/></div>
+                                <div><strong>TELF.:</strong> <span t-field="doc.partner_id.phone"/></div>
+                                <div><strong>CIUDAD:</strong> <span t-field="doc.partner_id.city"/></div>                                          
+                            </div>
+                        </div>
+                    </div>   
+                    <div class="row">
+                        <div class="col-12" style="padding-left: 5mm;">
+                            <div style="font-size: 11px;">
+                                <div><strong>AUTORIZACIÓN:</strong> <span t-field="doc.l10n_ec_authorization_number"/></div>
+                                <div><strong>CLAVE DE ACCESO:</strong> <span t-field="doc.l10n_ec_authorization_number"/></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

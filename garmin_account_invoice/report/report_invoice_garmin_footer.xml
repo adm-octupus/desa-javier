@@ -1,0 +1,46 @@
+<odoo>
+    <data>
+        <template id="report_invoice_garmin_document_footer">
+            <t t-name="garmin_account_invoice.report_invoice_garmin_document_footer">
+                <style>
+                    table.no-borders,
+                    table.no-borders * {
+                        border: none !important;
+                        border-width: 0 !important;
+                        outline: none !important;
+                        box-shadow: none !important;
+                    }
+                </style>
+                <div style="width: 170mm; margin-left: 10mm; font-size: 11px; margin-top: 10mm;">
+                    <table class="no-borders"
+                           style="width: 170mm; table-layout: fixed; border-collapse: collapse; border: 0px; outline: none; box-shadow: none;">
+                        <colgroup>
+                            <col style="width: 115mm;"/>
+                            <col style="width: 55mm;"/>
+                        </colgroup>
+                        <tr>
+                            <td style="font-family: 'Liberation Mono', monospace;">
+                                SON: <span t-esc="doc.amount_to_words()"/>
+                            </td>
+                            <td rowspan="3" style="vertical-align: top;">
+                                <t t-set="tax_totals" t-value="doc.tax_totals"/>
+                                <table class="no-borders"
+                                    style="width: 100%; font-size: 11px; border-collapse: collapse; border: none; outline: none; box-shadow: none;">
+                                    <tbody>
+                                        <t t-call="account.document_tax_totals"/>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Agente de Retención mediante</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Resolución Nro. NAC-DNCRASC20-00000001</strong></td>
+                        </tr>
+                    </table>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

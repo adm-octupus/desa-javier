@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_invoice_garmin_document">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-set="doc" t-value="o"/>
+                    <div class="article" t-att-data-oe-model="o._name" t-att-data-oe-id="o.id">
+                        <div class="page" style="padding: 0; margin: 0; font-size: 11px;">
+                            <!-- HEADER -->
+                            <t t-call="garmin_account_invoice.report_invoice_garmin_document_header"/>
+                            <!-- ESPACIO PARA DATOS DE FACTURA -->
+                            <div style="margin-top: 80px;"/>
+                            <t t-call="garmin_account_invoice.report_invoice_garmin_document_detail"/>
+                            <!-- FOOTER -->
+                            <div style="margin-top: 10px;"/>
+                            <t t-call="garmin_account_invoice.report_invoice_garmin_document_footer"/>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

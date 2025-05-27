@@ -13,7 +13,10 @@
     'depends': ['base','account','sale_stock'],
     'data': [
         # 'security/ir.model.access.csv',
-        'report/invoice_garmin_template.xml',
+        'report/report_invoice_garmin_detail.xml',
+        'report/report_invoice_garmin_header.xml',
+        'report/report_invoice_garmin_footer.xml',
+        'report/report_invoice_garmin_document.xml',
         'report/invoice_garmin_report.xml',
     ],
     'installable': True,
