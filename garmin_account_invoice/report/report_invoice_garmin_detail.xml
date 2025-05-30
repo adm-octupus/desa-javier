@@ -14,7 +14,7 @@
                 </style>
                 <t t-set="formatted_lines" t-value="o.get_formatted_invoice_lines()"/>
                 <div style="height: 100mm; overflow: hidden;">
-                    <table class="no-borders" style="width: 170mm; margin-left: 5mm; border-collapse: collapse; font-size: 11px;">
+                    <table class="no-borders" style="width: 165mm; margin-left: 5mm; border-collapse: collapse; font-size: 11px;">
                         <t t-foreach="formatted_lines" t-as="line">
                             <tr>
                                 <!-- Cantidad -->
@@ -22,14 +22,14 @@
                                     <span t-esc="line['quantity']" style="font-size: 12px;"/>
                                 </td>
                                 <!-- Nombre y seriales -->
-                                <td style="width: 110mm; padding-left: 8mm; vertical-align: top;">
+                                <td style="width: 105mm; padding-left: 8mm; vertical-align: top;">
                                     <div style="font-size: 12px;"><span t-esc="line['product_name']"/></div>
                                     <t t-foreach="line['formatted_serials']" t-as="serial_line">
                                         <div style="font-size: 10px; margin-top: 1mm;"><strong t-esc="serial_line"/></div>
                                     </t>
                                 </td>
                                 <!-- Precio unitario -->
-                                <td style="width: 20mm; text-align: right; padding: 0 5mm; vertical-align: top;">
+                                <td style="width: 25mm; text-align: right; padding: 0 5mm; vertical-align: top;">
                                     <span t-esc="line['price_unit']" t-options='{"widget": "float", "precision": 2}' style="font-size: 12px;"/>
                                 </td>
                                 <!-- Subtotal -->

@@ -10,10 +10,10 @@
                             <!-- HEADER -->
                             <t t-call="garmin_account_invoice.report_invoice_garmin_document_header"/>
                             <!-- ESPACIO PARA DATOS DE FACTURA -->
-                            <div style="margin-top: 80px;"/>
+                            <div style="margin-top: 100px;"/>
                             <t t-call="garmin_account_invoice.report_invoice_garmin_document_detail"/>
                             <!-- FOOTER -->
-                            <div style="margin-top: 10px;"/>
+                            <div style="margin-top: 20px;"/>
                             <t t-call="garmin_account_invoice.report_invoice_garmin_document_footer"/>
                         </div>
                     </div>
