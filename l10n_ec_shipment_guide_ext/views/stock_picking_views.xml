@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_picking_form_remission_guide" model="ir.ui.view">
+        <field name="name">stock.picking.form.remission.guide</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            
+            <xpath expr="//header" position="inside">
+                <field name="l10n_ec_ott_remission_guide_id" invisible="1"/>
+                <button name="action_create_remission_guide" 
+                        type="object" 
+                        string="Create Remission Guide"
+                        class="btn-primary"
+                        attrs="{'invisible': ['|', '|', '|', 
+                                ('state', '!=', 'done'), 
+                                ('l10n_ec_ott_remission_guide_enabled', '=', False),
+                                ('picking_type_code', '!=', 'outgoing'),
+                                ('l10n_ec_ott_remission_guide_id', '!=', False)]}"/>                                
+            </xpath>
+            
+            <xpath expr="//group[group/field[@name='partner_id']]" position="after">
+                <group attrs="{'invisible': [('picking_type_code', '!=', 'outgoing')]}">
+                    <field name="l10n_ec_ott_remission_guide_enabled"
+                        widget="boolean_toggle"
+                        attrs="{'invisible': [('picking_type_code', '!=', 'outgoing')]}"/>
+                </group>
+                                 
+                <group string="Remission Guide Configuration"
+                        attrs="{'invisible': ['|', ('l10n_ec_ott_remission_guide_enabled', '=', False), ('picking_type_code', '!=', 'outgoing')]}">
+                    <group>
+                        <field name="l10n_ec_ott_journal_id"
+                                attrs="{'required': [('l10n_ec_ott_remission_guide_enabled', '=', True)]}"/>
+                        <field name="l10n_ec_ott_document_type"
+                                attrs="{'required': [('l10n_ec_ott_remission_guide_enabled', '=', True)]}"/>
+                        <field name="l10n_ec_ott_carrier_id"
+                                attrs="{'required': [('l10n_ec_ott_remission_guide_enabled', '=', True)]}"/>
+                    </group>
+                    <group>
+                        <field name="l10n_ec_ott_license_plate_id"
+                                attrs="{'required': [('l10n_ec_ott_remission_guide_enabled', '=', True)]}"/>
+                        <field name="l10n_ec_ott_transfer_reason"
+                                attrs="{'required': [('l10n_ec_ott_remission_guide_enabled', '=', True)]}"/>
+                        <field name="l10n_ec_ott_invoice_id"
+                                context="{'default_partner_id': partner_id}"
+                               domain="[('partner_id', '=', partner_id), ('move_type', '=', 'out_invoice'), ('state', '=', 'posted')]"/>
+                    </group>
+                </group>
+            </xpath>
+
+            <xpath expr="//page[@name='note']" position="after">
+                <page string="Remission Guides" name="remission_guides"
+                      attrs="{'invisible': ['|', ('picking_type_code', '!=', 'outgoing'), ('l10n_ec_ott_remission_guide_id', '=', False)]}">
+                    <group>
+                        <group string="Remission Guide Information">
+                            <field name="l10n_ec_ott_remission_guide_id" readonly="1"/>
+                        </group>
+                    </group>
+                    
+                    <separator string="Remission Guide Details"/>
+                    <group>
+                        <field name="l10n_ec_ott_journal_id" readonly="1"/>
+                        <field name="l10n_ec_ott_document_type" readonly="1"/>
+                        <field name="l10n_ec_ott_carrier_id" readonly="1"/>
+                        <field name="l10n_ec_ott_license_plate_id" readonly="1"/>
+                        <field name="l10n_ec_ott_transfer_reason" readonly="1"/>
+                        <field name="l10n_ec_ott_invoice_id" readonly="1"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_picking_internal_tree_inherit" model="ir.ui.view">
+        <field name="name">stock.picking.tree.inherit</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.vpicktree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='location_id']" position="after">
+                <field name="l10n_ec_ott_remission_guide_id" 
+                        string="Remission Guide" 
+                        optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_picking_internal_filter_inherit" model="ir.ui.view">
+        <field name="name">stock.picking.search.inherit</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_internal_search"/>
+        <field name="arch" type="xml">
+            
+            <xpath expr="//field[last()]" position="after">
+                <field name="l10n_ec_ott_remission_guide_id" string="Remission Guide"/>
+            </xpath>
+            
+            <xpath expr="//filter[last()]" position="after">
+                <separator/>
+                <filter name="filter_with_remission_guide" 
+                        string="With Remission Guide" 
+                        domain="[('l10n_ec_ott_remission_guide_id', '!=', False)]"/>
+                <filter name="filter_without_remission_guide" 
+                        string="Without Remission Guide" 
+                        domain="[('l10n_ec_ott_remission_guide_id', '=', False)]"/>
+            </xpath>
+            
+            <xpath expr="//group/filter[last()]" position="after">
+                <filter string="Remission Guide" 
+                        name="group_by_remission_guide" 
+                        context="{'group_by': 'l10n_ec_ott_remission_guide_id'}"/>
+            </xpath>
+        </field>
+    </record>
+    
+</odoo>

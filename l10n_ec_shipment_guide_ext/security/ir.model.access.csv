@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_stock_picking_remission_guide_user,stock.picking.remission.guide.user,stock.model_stock_picking,stock.group_stock_user,1,1,1,0
+access_stock_picking_remission_guide_manager,stock.picking.remission.guide.manager,stock.model_stock_picking,stock.group_stock_manager,1,1,1,1
+access_remission_guide_user,remission.guide.user,l10n_ec_shipment_guide.model_remission_guide,stock.group_stock_user,1,1,1,0
+access_remission_guide_manager,remission.guide.manager,l10n_ec_shipment_guide.model_remission_guide,stock.group_stock_manager,1,1,1,1
+l10n_ec_remission_guide.access_account_move_user,access_account_move_user,model_account_move,base.group_user,1,1,1,1
+l10n_ec_remission_guide.access_account_move_account,access_account_move_account,model_account_move,account.group_account_user,1,1,1,1

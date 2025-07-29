@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_metalhidalgo_pos_ext_metalhidalgo_pos_ext,metalhidalgo_pos_ext.metalhidalgo_pos_ext,model_metalhidalgo_pos_ext_metalhidalgo_pos_ext,base.group_user,1,1,1,1
