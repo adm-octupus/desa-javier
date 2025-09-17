@@ -1,0 +1,26 @@
+<odoo>
+  <data>
+    <record id="view_hr_department_form_inherited" model="ir.ui.view">
+      <field name="name">hr.department.form.inherited</field>
+      <field name="model">hr.department</field>
+      <field name="inherit_id" ref="hr.view_department_form"/>
+      <field name="arch" type="xml">
+          <xpath expr="//group[@col='4']" position="replace">
+            <group>
+              <group>
+                <field name="name"/>
+                <field name="manager_id"/>
+                <field name="parent_id"/>
+                <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+              </group>
+              <group>
+                <field name="lch_process"/>
+                <field name="lch_area"/>
+                <field name="lch_section"/>
+              </group>
+            </group>
+          </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>

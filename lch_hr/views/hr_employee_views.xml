@@ -1,0 +1,19 @@
+<odoo>
+  <data>
+    <record id="view_hr_employee_form_inherited" model="ir.ui.view">
+      <field name="name">hr.employee.form.inherited</field>
+      <field name="model">hr.employee</field>
+      <field name="inherit_id" ref="hr.view_employee_form"/>
+      <field name="arch" type="xml">
+          <xpath expr="//field[@name='department_id']" position="after">
+            <field name="lch_process"
+              attrs="{'invisible': [('lch_process', '=', False)]}"/>
+            <field name="lch_area"
+              attrs="{'invisible': [('lch_area', '=', False)]}"/>
+            <field name="lch_section"
+              attrs="{'invisible': [('lch_section', '=', False)]}"/>
+          </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>

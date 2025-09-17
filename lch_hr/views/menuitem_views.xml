@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem 
+            id="menu_lch_hr_structure_analytics" 
+            parent="hr_work_entry_contract_enterprise.menu_hr_payroll_configuration"  
+            action="action_lch_hr_structure_analytics" 
+            sequence="1" />
+    </data>
+</odoo>

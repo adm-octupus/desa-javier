@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+
+        <!--        action-->
+        <!--    <record model="ir.actions.act_window" id="modulos_pruebas.action_window">-->
+        <!--      <field name="name">modulos_pruebas window</field>-->
+        <!--      <field name="res_model">modulos_pruebas.modulos_pruebas</field>-->
+        <!--      <field name="view_mode">tree,form</field>-->
+        <!--    </record>-->
+
+        <record id="action_sale_order" model="ir.actions.act_window">
+            <field name="name">Sale Order</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_ids"
+                   eval="[
+                (5, 0, 0),
+                (0, 0, {
+                    'view_mode': 'tree',
+                    'view_id': ref('sale.view_quotation_tree_with_onboarding'),
+                    }),
+                (0, 0, {
+                    'view_mode': 'form',
+                    'view_id': ref('sale.view_order_form'),
+                    }),
+                ]"
+            />
+        </record>
+
+
+        <record id="action_res_partner" model="ir.actions.act_window">
+            <field name="name">Contactos</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_ids"
+                   eval="[
+        (5, 0, 0),
+        (0, 0, {
+            'view_mode': 'tree',
+            'view_id': ref('base.view_partner_tree'),
+            }),
+        (0, 0, {
+            'view_mode': 'form',
+            'view_id': ref('view_res_partner_heredado_form'),
+            }),
+        ]"
+            />
+        </record>
+
+
+        <!--          <record id="action_sale_order" model="ir.actions.act_window">-->
+        <!--            <field name="name">Sale Order</field>-->
+        <!--            <field name="type">ir.actions.act_window</field>-->
+        <!--            <field name="res_model">sale.order</field>-->
+        <!--            <field name="view_mode">tree,form</field>-->
+        <!--            <field name="view_ids"-->
+        <!--                   eval="[-->
+        <!--                (5, 0, 0),-->
+        <!--                (0, 0, {-->
+        <!--                    'view_mode': 'tree',-->
+        <!--                    'view_id': ref('sale.view_quotation_tree_with_onboarding'),-->
+        <!--                    }),-->
+        <!--                (0, 0, {-->
+        <!--                    'view_mode': 'form',-->
+        <!--                    'view_id': ref('sale.view_order_form'),-->
+        <!--                    }),-->
+        <!--                ]"-->
+        <!--            />-->
+        <!--        </record>-->
+
+
+        <!-- Top menu item -->
+
+        <menuitem name="modulos_octupus" id="modulos_octupus.menu_root"/>
+
+        <!-- menu categories -->
+
+
+        <menuitem name="Menu 1" id="modulos_octupus.menu_1" parent="modulos_octupus.menu_root"/>
+        <menuitem name="Menu 2" id="modulos_octupus.menu_2" parent="modulos_octupus.menu_root"/>
+
+
+        <!-- actions -->
+
+        <menuitem name="List" id="modulos_octupus.menu_1_list" parent="modulos_octupus.menu_1"
+                  action="action_res_partner"/>
+
+        <!--
+    <menuitem name="Server to list" id="modulos_pruebas" parent="modulos_pruebas.menu_2"
+              action="modulos_pruebas.action_server"/>
+-->
+
+
+    </data>
+
+</odoo>

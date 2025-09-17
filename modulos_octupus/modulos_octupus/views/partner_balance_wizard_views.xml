@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_partner_balance_wizard_form" model="ir.ui.view">
+        <field name="name">partner.balance.wizard</field>
+        <field name="model">partner.balance.wizard</field>
+        <field name="arch" type="xml">
+            <header>
+                <button name="ver" string="Ver" type="object" class="oe_highlight"/>
+                <button string="Cancelar" class="btn-secondary" special="cancel"/>
+            </header>
+
+            <form>
+
+
+                <group string="Detalle de Saldos" col="2">
+                    <field name="partner_id"/>
+                    <field name="open_invoices_amount" widget="monetary"/>
+                    <field name="draft_orders_amount" widget="monetary"/>
+                    <field name="total_exposure" widget="monetary"/>
+                    <field name="credit_limit" widget="monetary"/>
+                </group>
+
+
+            </form>
+
+
+        </field>
+    </record>
+
+</odoo>

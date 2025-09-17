@@ -1,0 +1,172 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* lch_hr
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-09-17 20:17+0000\n"
+"PO-Revision-Date: 2025-09-17 20:17+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: lch_hr
+#. odoo-python
+#: code:addons/lch_hr/models/structure_analytics.py:0
+#: model:ir.model.constraint,message:lch_hr.constraint_lch_hr_structure_analytics_uniq_lch_hr_structure_analytics
+#, python-format
+msgid ""
+"A configuration already exists for this department, structure and company."
+msgstr ""
+"Ya existe una configuración para este departamento, estructura y empresa."
+
+#. module: lch_hr
+#: model:ir.model.fields,field_description:lch_hr.field_lch_hr_structure_analytics__analytic_distribution
+msgid "Analytic Distribution"
+msgstr "Distribución analítica"
+
+#. module: lch_hr
+#: model:ir.model.fields,field_description:lch_hr.field_lch_hr_structure_analytics__analytic_distribution_search
+msgid "Analytic Distribution Search"
+msgstr "Búsqueda de distribución analítica"
+
+#. module: lch_hr
+#: model:ir.model.fields,field_description:lch_hr.field_lch_hr_structure_analytics__analytic_precision
+msgid "Analytic Precision"
+msgstr "Precisión analítica"
+
+#. module: lch_hr
+#: model:ir.actions.server,name:lch_hr.ir_cron_lch_apply_to_contracts_daily_ir_actions_server
+#: model:ir.cron,cron_name:lch_hr.ir_cron_lch_apply_to_contracts_daily
+msgid "Apply Structure Analytics to Contracts (Daily)"
+msgstr "Aplicar estructura analítica a los contratos (diariamente)"
+
+#. module: lch_hr
+#: model:ir.actions.server,name:lch_hr.action_lch_hr_structure_analytics_apply_to_contracts
+msgid "Apply to Contracts"
+msgstr "Aplicar a los contratos"
+
+#. module: lch_hr
+#: model_terms:ir.ui.view,arch_db:lch_hr.view_lch_hr_structure_analytics_tree
+msgid "Apply to contracts"
+msgstr "Aplicar a los contratos"
+
+#. module: lch_hr
+#: model:ir.model.fields,field_description:lch_hr.field_hr_department__lch_area
+#: model:ir.model.fields,field_description:lch_hr.field_hr_employee__lch_area
+#: model:ir.model.fields,field_description:lch_hr.field_hr_employee_public__lch_area
+msgid "Area"
+msgstr "Área"
+
+#. module: lch_hr
+#: model:ir.actions.act_window,name:lch_hr.action_lch_hr_structure_analytics
+#: model:ir.ui.menu,name:lch_hr.menu_lch_hr_structure_analytics
+msgid "Automation Analytic"
+msgstr "Automatización de cuentas analíticas"
+
+#. module: lch_hr
+#: model_terms:ir.ui.view,arch_db:lch_hr.view_lch_hr_structure_analytics_form
+#: model_terms:ir.ui.view,arch_db:lch_hr.view_lch_hr_structure_analytics_search
+#: model_terms:ir.ui.view,arch_db:lch_hr.view_lch_hr_structure_analytics_tree
+msgid "Automation Analytic Configurations"
+msgstr "Configuraciones analíticas de automatización"
+
+#. module: lch_hr
+#: model:ir.model.fields,field_description:lch_hr.field_lch_hr_structure_analytics__company_id
+#: model_terms:ir.ui.view,arch_db:lch_hr.view_lch_hr_structure_analytics_search
+msgid "Company"
+msgstr "Compañía"
+
+#. module: lch_hr
+#: model_terms:ir.actions.act_window,help:lch_hr.action_lch_hr_structure_analytics
+msgid ""
+"Create analytical distribution configurations by Company, Department and "
+"Structure.."
+msgstr "Crear configuraciones de distribución analítica por Empresa, "
+"Departamento y Estructura.."
+
+#. module: lch_hr
+#: model:ir.model.fields,field_description:lch_hr.field_lch_hr_structure_analytics__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: lch_hr
+#: model:ir.model.fields,field_description:lch_hr.field_lch_hr_structure_analytics__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: lch_hr
+#: model:ir.model,name:lch_hr.model_hr_department
+#: model:ir.model.fields,field_description:lch_hr.field_lch_hr_structure_analytics__department_id
+#: model_terms:ir.ui.view,arch_db:lch_hr.view_lch_hr_structure_analytics_search
+msgid "Department"
+msgstr "Departamento"
+
+#. module: lch_hr
+#: model:ir.model.fields,field_description:lch_hr.field_lch_hr_structure_analytics__display_name
+msgid "Display Name"
+msgstr "Nombre para mostrar"
+
+#. module: lch_hr
+#: model:ir.model,name:lch_hr.model_hr_employee
+msgid "Employee"
+msgstr "Empleado"
+
+#. module: lch_hr
+#: model:ir.model.fields,field_description:lch_hr.field_lch_hr_structure_analytics__id
+msgid "ID"
+msgstr ""
+
+#. module: lch_hr
+#: model:ir.model,name:lch_hr.model_lch_hr_structure_analytics
+msgid "LCH HR Structure Analytics"
+msgstr "Automatización de cuentas analíticas"
+
+#. module: lch_hr
+#: model:ir.model.fields,field_description:lch_hr.field_lch_hr_structure_analytics____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: lch_hr
+#: model:ir.model.fields,field_description:lch_hr.field_lch_hr_structure_analytics__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: lch_hr
+#: model:ir.model.fields,field_description:lch_hr.field_lch_hr_structure_analytics__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: lch_hr
+#: model:ir.model.fields,field_description:lch_hr.field_lch_hr_structure_analytics__structure_type_id
+msgid "Payroll Structure"
+msgstr "Estructura de nómina"
+
+#. module: lch_hr
+#: model:ir.model.fields,field_description:lch_hr.field_hr_department__lch_process
+#: model:ir.model.fields,field_description:lch_hr.field_hr_employee__lch_process
+#: model:ir.model.fields,field_description:lch_hr.field_hr_employee_public__lch_process
+msgid "Process"
+msgstr "Proceso"
+
+#. module: lch_hr
+#: model:ir.model,name:lch_hr.model_hr_employee_public
+msgid "Public Employee"
+msgstr "Empleado público"
+
+#. module: lch_hr
+#: model:ir.model.fields,field_description:lch_hr.field_hr_department__lch_section
+#: model:ir.model.fields,field_description:lch_hr.field_hr_employee__lch_section
+#: model:ir.model.fields,field_description:lch_hr.field_hr_employee_public__lch_section
+msgid "Section"
+msgstr "Sección"
+
+#. module: lch_hr
+#: model_terms:ir.ui.view,arch_db:lch_hr.view_lch_hr_structure_analytics_search
+msgid "Structure Type"
+msgstr "Tipo de estructura"

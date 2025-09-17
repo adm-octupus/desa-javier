@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+
+        <record model="ir.ui.view" id="view_res_partner_heredado_form">
+            <field name="name">Res Partner</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <!--            agrega informacion a la vista personalizada-->
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                <xpath expr="/form/*" position="after">
+                    <header>
+                        <button name="saldo_actual" string="Ver saldo actual" type="object" class="oe_highlight"/>
+                    </header>
+                </xpath>
+                <xpath expr="//field[@name='category_id']" position="after">
+                    <field name="credit_limit"/>
+
+                </xpath>
+
+            </field>
+        </record>
+
+
+    </data>
+</odoo>
